@@ -1,9 +1,14 @@
 #!/bin/bash
 
 function invert(){
-    echo "Inverting '$1' to '$2' ---------------------------------------------"
+    output=$2
+    if [[ $1 -eq $2 ]]
+    then
+        output=inv_$2
+    fi
+    echo "Inverting '$1' to '$output' ---------------------------------------------"
 
-    gs -o $2    \
+    gs -o $output    \
        -sDEVICE=pdfwrite  \
        -c "{1 exch sub}{1 exch sub}{1 exch sub}{1 exch sub} setcolortransfer" \
        -f $1
@@ -24,7 +29,7 @@ then
         invert $file $file
     done
 else
-    output=$1
+    output=$1_inv
     if [[ $# -gt 1 ]]
     then
         output=$2
