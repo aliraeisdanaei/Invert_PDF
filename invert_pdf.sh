@@ -1,10 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function invert(){
     output=$2
-    if [[ $1 -eq $2 ]]
+    if [[ $1 == $2 ]]
     then
-        output=inv_$2
+        directory=$(dirname "$1")
+        fullname=$(basename -- "$1")
+        extension="${fullname#*.}"
+        filename="${fullname%%.*}"
+
+        output=$directory\/$filename\_inv.$extension
+        # echo 'extension' $extension
+        # echo 'filename' $filename
+        # echo 'directory' $directory
+        # echo $output
     fi
     echo "Inverting '$1' to '$output' ---------------------------------------------"
 
@@ -29,10 +38,10 @@ then
         invert $file $file
     done
 else
-    output=$1_inv
     if [[ $# -gt 1 ]]
     then
-        output=$2
+        invert $1 $2
+    else
+        invert $1 $1
     fi
-    invert $1 $ouput
 fi
