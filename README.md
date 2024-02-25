@@ -9,12 +9,12 @@ The second argument is optional, and may be the output path for a single file. I
 Here are simple ways to use it.
 
 # make the file executable
-chomd +x invert_pdf.sh
+`chmod +x invert_pdf.sh`
 
 # invert one file
-./invert_pdf.sh input_file.pdf output_file.pdf
+`./invert_pdf.sh input_file.pdf output_file.pdf`
 
 # invert a whole directory
-./invert_pdf.sh path_to_directory
+`./invert_pdf.sh path_to_directory`
 
 God bless
